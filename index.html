@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Obligator 1300</title>
+
+    <link href="vendor/bootstrap.min.css" rel="stylesheet">
+    <link href="css/common.css" rel="stylesheet">
+</head>
+
+<body>
+
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">Obligator 1300</a>
+        </div>
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav navbar-right">
+                <li id="js-book-add"><a href="#" class="js-book-add__action">+ Add</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div class="container book">
+    <table id="js-book" class="table table-striped">
+      <tfoot>
+        <tr>
+            <th colspan="5" id="js-book-footer">Total: $1000</th>
+        </tr>
+      </tfoot>
+      <thead>
+        <tr>
+            <th>Firstname</th>
+            <th>Lastname</th>
+            <th>Phone</th>
+            <th>Obligation</th>
+            <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody id="js-book-list"></tbody>
+    </table>
+</div>
+
+<script type="text/template" id="js-book-templates-item">
+    <td class="js-book-item__firstname"><%= firstname %></td>
+    <td class="js-book-item__lastname"><%= lastname %></td>
+    <td class="js-book-item__phone"><%= phone %></td>
+    <td class="js-book-item__obligation"><%= obligation %></td>
+    <td>
+        <button type="button" class="btn btn-xs btn-default js-book-item__edit">Edit</button>
+        <button type="button" class="btn btn-xs btn-danger js-book-item__remove">Remove</button>
+    </td>
+</script>
+
+<script type="text/template" id="js-book-templates-item-form">
+    <div class="popup popup_visible_hidden">
+        <div class="popup__paranja"></div>
+        <div class="popup__content">
+            <form role="form">
+                <div class="form-group">
+                    <label>Firstname</label>
+                    <input type="text" class="form-control" placeholder="Firstname" name="firstname">
+                </div>
+                <div class="form-group">
+                    <label>Lastname</label>
+                    <input type="text" class="form-control" placeholder="Lastname" name="lastname">
+                </div>
+                <div class="form-group">
+                    <label>Phone</label>
+                    <input type="phone" class="form-control" placeholder="Phone" name="phone">
+                </div>
+                <div class="form-group">
+                    <label>Obligation</label>
+                    <input type="text" class="form-control" placeholder="Obligation" name="obligation">
+                </div>
+                <button type="submit" class="btn btn-success">Save</button>
+                <button class="js-book-popup-close btn btn-danger">Close</button>
+            </form>
+        </div>
+    </div>
+</script>
+
+<script type="text/template" id="js-book-templates-item-form-inner">
+    <form class="js-book-popup-form" role="form">
+        <div class="form-group">
+            <label>Firstname</label>
+            <input type="text" class="form-control" placeholder="Firstname" name="firstname" value="<%= (typeof(firstname) != "undefined") ? firstname : '' %>" />
+        </div>
+        <div class="form-group">
+            <label>Lastname</label>
+            <input type="text" class="form-control" placeholder="Lastname" name="lastname" value="<%= (typeof(lastname) != "undefined") ? lastname : '' %>" />
+        </div>
+        <div class="form-group">
+            <label>Phone</label>
+            <input type="phone" class="form-control" placeholder="Phone" name="phone" value="<%= (typeof(phone) != "undefined") ? phone : '' %>" />
+        </div>
+        <div class="form-group">
+            <label>Obligation</label>
+            <input type="text" class="form-control" placeholder="Obligation" name="obligation" value="<%= (typeof(obligation) != "undefined") ? obligation : '' %>" />
+        </div>
+        <button type="submit" class="btn btn-success">Save</button>
+        <button class="js-book-popup-close btn btn-danger">Close</button>
+    </form>
+</script>
+
+<script src="vendor/jquery.min.js"></script>
+<script src="vendor/underscore.js"></script>
+<script src="vendor/backbone.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>

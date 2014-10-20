@@ -1,0 +1,49 @@
+body {
+    padding-top: 70px;
+}
+
+.thumbnail-image {
+    display: inline-block;
+    width: 242px;
+    height: 200px;
+    background: #ccc;
+}
+
+.book {
+    margin: 0 auto;
+}
+
+.book__footer {
+    text-align: right;
+}
+
+.popup {
+    position: fixed;
+    z-index: 1100;
+}
+
+.popup_visible_hidden {
+    display: none;
+}
+
+.popup__paranja {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: #000000;
+    opacity: 0.3;
+}
+
+.popup__content {
+    position: fixed;
+    width: 600px;
+    height: 400px;
+    padding: 20px;
+    top: 50%;
+    left: 50%;
+    margin: -200px 0 0 -300px;
+    background: #fff;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+}
