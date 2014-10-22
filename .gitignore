@@ -1,1 +1,6 @@
+.idea
 node_modules
+libs
+desktop.bundles/*/*.*
+!desktop.bundles/*/*.bemdecl.js
+.enb/tmp
