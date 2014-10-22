@@ -60,7 +60,7 @@
     <td class="js-book-item__phone"><%= phone %></td>
     <td class="js-book-item__obligation"><%= obligation %></td>
     <td>
-        <button type="button" class="btn btn-xs btn-default js-book-item__edit">Edit</button>
+        <a href="#edit/<%= mid %>" type="button" class="btn btn-xs btn-default js-book-item__edit">Edit</a>
         <button type="button" class="btn btn-xs btn-danger js-book-item__remove">Remove</button>
     </td>
 </script>
@@ -94,7 +94,7 @@
 </script>
 
 <script type="text/template" id="js-book-templates-item-form-inner">
-    <form class="js-book-popup-form" role="form">
+    <form class="js-book-popup-form" role="form" autocomplete="off">
         <div class="form-group">
             <label>Firstname</label>
             <input type="text" class="form-control" placeholder="Firstname" name="firstname" value="<%= (typeof(firstname) != "undefined") ? firstname : '' %>" />

@@ -16,8 +16,24 @@
 
     models.Obligator = Backbone.Model.extend({
         validate: function (attrs) {
-            if (!$.trim(attrs.title)) {
-                return {'code': 'EMPTY_TITLE'}
+            if (!attrs.firstname) {
+                return {'code': 'FIRSTNAME_EMPTY'};
+            }
+
+            if (!attrs.lastname) {
+                return {'code': 'LASTNAME_EMPTY'};
+            }
+
+            if (!attrs.phone) {
+                return {'code': 'PHONE_EMPTY'};
+            }
+
+            if (attrs.phone && attrs.phone.indexOf('+7') < 0) {
+                return {'code': 'PHONE_INVALID'};
+            }
+
+            if (!attrs.obligation || attrs.obligation <= 0) {
+                return {'code': 'OBLIGATION_INVALID'};
             }
         }
     });
@@ -57,8 +73,8 @@
             return this;
         },
 
-        addOne: function (taskModelData) {
-            var taskView = new views.Obligator({ model: taskModelData });
+        addOne: function (obligator) {
+            var taskView = new views.Obligator({ model: obligator });
             this.$el.append(taskView.el);
         }
     });
@@ -71,7 +87,7 @@
         template: _.template($('#js-book-templates-item').html()),
 
         events: {
-            'click .js-book-item__edit': 'edit',
+            //'click .js-book-item__edit': 'edit',
             'click .js-book-item__remove': 'destroy'
         },
 
@@ -95,22 +111,12 @@
             });
 
 
-            this.listenTo(this.model, 'invalid', this.error);
             this.render();
         },
 
         render: function () {
             this.$el.html(this.template(this.model.toJSON()));
             return this;
-        },
-
-        error: function (task, err) {
-            alert(err.code)
-        },
-
-        edit: function (e) {
-            PubSub.trigger('obligator:edit', this.model);
-            e.preventDefault();
         },
 
         destroy: function (e) {
@@ -179,7 +185,7 @@
         },
 
         hide: function () {
-            this.$popup.addClass('popup_visible_hidden');
+            this.remove();
         },
 
         render: function () {
@@ -194,47 +200,52 @@
     });
 
     views.FormObligatorCreate = views.FormObligator.extend({
+        model: models.Obligator,
+
         initialize: function (options) {
-            var _this = this;
-
             this.constructor.__super__.initialize.apply(this, arguments);
-            this.ObligatorModel = options.ObligatorModel;
+            this.show();
+        },
 
-            PubSub.on('obligator:add', function () {
-                _this.show();
-            });
+        error: function (obligator, err) {
+            alert(err.code);
         },
 
         save: function (e) {
-            var _this = this;
             var formData = $(e.currentTarget).serializeArray();
             var obligatorNewModel = {};
-            e.preventDefault();
 
             _.forEach(formData, function (item) {
                 obligatorNewModel[item.name] = item.value;
             });
 
-            PubSub.trigger('obligator:created', (new this.ObligatorModel(obligatorNewModel)));
+            obligatorNewModel = new this.model(obligatorNewModel);
 
-            this.hide();
+            this.listenTo(obligatorNewModel, 'invalid', this.error);
+
+            if (obligatorNewModel.isValid()) {
+                PubSub.trigger('obligator:created', obligatorNewModel);
+                this.hide();
+            }
 
             e.preventDefault();
         }
     });
 
     views.FormObligatorEdit = views.FormObligator.extend({
-        initialize: function () {
-            var _this = this;
+        model: models.Obligator,
 
-            this.obligatorEdit = null;
+        initialize: function () {
             this.constructor.__super__.initialize.apply(this, arguments);
 
-            PubSub.on('obligator:edit', function (obligator) {
-                _this.obligatorEdit = obligator;
-                _this.renderForm(obligator.toJSON());
-                _this.show();
-            });
+            this.listenTo(this.model, 'invalid', this.error);
+
+            this.renderForm(this.model.toJSON());
+            this.show();
+        },
+
+        error: function (obligator, err) {
+            alert(err.code);
         },
 
         save: function (e) {
@@ -242,10 +253,12 @@
             var _this = this;
 
             _.forEach(formData, function (item) {
-                _this.obligatorEdit.set(item.name, item.value);
+                _this.model.set(item.name, item.value);
             });
 
-            this.hide();
+            if (_this.model.isValid()) {
+                this.hide();
+            }
 
             e.preventDefault();
         }
@@ -253,18 +266,29 @@
 
 
     exports.obligatorsList = new collection.Obligators([
-        {'firstname': 'Vlad', 'lastname': 'Kurkin', 'phone': '+79251234567', 'obligation': 5000},
-        {'firstname': 'Anton', 'lastname': 'Sachkov', 'phone': '+79251234567', 'obligation': 4000},
-        {'firstname': 'Pavel', 'lastname': 'Masalskiy', 'phone': '+79251234567', 'obligation': 3000},
-        {'firstname': 'Ivan', 'lastname': 'Zasimov', 'phone': '+79251234567', 'obligation': 2000},
-        {'firstname': 'Dmitry', 'lastname': 'Polyakov', 'phone': '+79251234567', 'obligation': 1300}
+        {'mid': 1, 'firstname': 'Vlad', 'lastname': 'Kurkin', 'phone': '+79251234567', 'obligation': 5000},
+        {'mid': 2, 'firstname': 'Anton', 'lastname': 'Sachkov', 'phone': '+79251234567', 'obligation': 4000},
+        {'mid': 3, 'firstname': 'Pavel', 'lastname': 'Masalskiy', 'phone': '+79251234567', 'obligation': 3000},
+        {'mid': 4, 'firstname': 'Ivan', 'lastname': 'Zasimov', 'phone': '+79251234567', 'obligation': 2000},
+        {'mid': 5, 'firstname': 'Dmitry', 'lastname': 'Polyakov', 'phone': '+79251234567', 'obligation': 1300}
     ]);
 
     var obligatorsView = new views.Obligators({el: '#js-book', collection: obligatorsList});
     var obligatorsTotalView = new views.ObligatorsTotal({el: '#js-book-footer', collection: obligatorsList});
     var addObligatorView =  new views.AddObligator({el: '#js-book-add'});
-    var formObligatorEdit = new views.FormObligatorEdit();
-    var formObligatorCreate = new views.FormObligatorCreate({'ObligatorModel': models.Obligator});
 
+    new Backbone.Router({
+        routes: {
+            'edit/:id': function (id) {
+                new views.FormObligatorEdit({model: obligatorsList.findWhere({'mid': Number(id)})});
+            },
+
+            'add': function () {
+                new views.FormObligatorCreate();
+            }
+        }
+    });
+
+    Backbone.history.start();
 
 })(window, jQuery);
