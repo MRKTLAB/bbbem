@@ -1,4 +1,5 @@
 module.exports = function(config) {
+    config.node('desktop.bundles/common');
     config.node('desktop.bundles/index');
 
     config.nodeMask(/desktop\.bundles\/.*/, function(nodeConfig) {
@@ -37,7 +38,8 @@ module.exports = function(config) {
 
 function getLevels(config) {
     return [
-        'desktop.blocks'
+        'desktop.blocks',
+        'desktop.modules'
     ].map(function(level) {
         return config.resolvePath(level);
     });

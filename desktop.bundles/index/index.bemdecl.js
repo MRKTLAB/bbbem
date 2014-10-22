@@ -1,3 +1,4 @@
 exports.deps = [
-    { "block": "page" }
+    { "block": "page" },
+    { "block": "app" }
 ];

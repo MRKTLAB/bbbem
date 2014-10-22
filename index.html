@@ -8,9 +8,8 @@
     <meta name="author" content="">
 
     <title>Obligator 1300</title>
-
-    <link href="vendor/bootstrap.min.css" rel="stylesheet">
-    <link href="css/common.css" rel="stylesheet">
+    <link href="desktop.bundles/common/common.css" rel="stylesheet">
+    <link href="desktop.bundles/index/index.css" rel="stylesheet">
 </head>
 <body>
     <div class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -114,21 +113,9 @@
         </form>
     </script>
 
-    <script src="node_modules/ym/modules.js"></script>
-    <script src="vendor/jquery.min.js"></script>
-    <script src="vendor/underscore.js"></script>
-    <script src="vendor/backbone.js"></script>
-    <script src="js/PubSub.js"></script>
-    <script src="js/CollectionObligators.js"></script>
-    <script src="js/ModelObligator.js"></script>
-    <script src="js/ViewObligator.js"></script>
-    <script src="js/ViewObligators.js"></script>
-    <script src="js/ViewTotalObligators.js"></script>
-    <script src="js/ViewAddObligator.js"></script>
-    <script src="js/ViewFormObligator.js"></script>
-    <script src="js/ViewFormObligatorEdit.js"></script>
-    <script src="js/ViewFormObligatorCreate.js"></script>
-    <script src="js/app.js"></script>
+
+    <script src="desktop.bundles/common/common.js"></script>
+    <script src="desktop.bundles/index/index.js"></script>
     <script>
         var app = modules.require(['app'], function (app) {
             app.setObligators([
