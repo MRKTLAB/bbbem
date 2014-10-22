@@ -2,5 +2,6 @@ exports.deps = [
     { "block": "underscore" },
     { "block": "jquery" },
     { "block": "backbone" },
-    { "block": "modules" }
+    { "block": "modules" },
+    { "block": "bootstrap" }
 ];
