@@ -117,7 +117,7 @@
     <script src="desktop.bundles/common/_common.js"></script>
     <script src="desktop.bundles/index/_index.js"></script>
     <script>
-        var app = modules.require(['app'], function (app) {
+        modules.require(['app'], function (app) {
             app.setObligators([
                 {'mid': 1, 'firstname': 'Vlad', 'lastname': 'Kurkin', 'phone': '+79251234567', 'obligation': 5000},
                 {'mid': 2, 'firstname': 'Anton', 'lastname': 'Sachkov', 'phone': '+79251234567', 'obligation': 4000},
