@@ -31,6 +31,8 @@
         </div>
     </div>
 
+    <div class="obligator i-bem" onclick="return {'obligator':{}}"></div>
+
     <div class="container book">
         <table id="js-book" class="table table-striped">
           <tfoot>
@@ -113,7 +115,6 @@
         </form>
     </script>
 
-
     <script src="desktop.bundles/common/_common.js"></script>
     <script src="desktop.bundles/index/_index.js"></script>
     <script>
@@ -128,6 +129,8 @@
 
             app.init();
         });
+
+        BEM.DOM.init();
     </script>
 </body>
 </html>
