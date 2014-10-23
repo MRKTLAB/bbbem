@@ -4,16 +4,18 @@ modules.define('ViewObligatorsTotal', ['CollectionObligators'], function(provide
         collection: CollectionObligators,
 
         initialize: function () {
+            this.bemEl = this.$el.bem('obligators-total');
             this.listenTo(this.collection, 'add remove change:obligation reset destroy', this.update);
             this.update();
         },
 
         update: function () {
-            this.render(this.collection.length);
+            this.render(this.collection.length, this.collection.getTotal());
+            return this;
         },
 
-        render: function (count) {
-            this.$el.text('Total obligators: '+count+', $'+this.collection.getTotal());
+        render: function (count, total) {
+            this.bemEl.render(count, total);
             return this;
         }
     });

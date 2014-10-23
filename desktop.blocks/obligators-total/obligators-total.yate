@@ -1,0 +1,4 @@
+module "obligator"
+
+match .obligator {
+}
