@@ -50,16 +50,16 @@ BEM.DOM.decl({
                         tag: 'td',
                         content: [
                             {
-                                elem: 'controls-edit',
-                                tag: 'a',
+                                block: 'btn btn-xs btn-default',
+                                tag: 'span',
                                 attrs: {
                                     href: '#edit/' + debtor.mid
                                 },
                                 content: 'Edit'
                             },
                             {
-                                elem: 'controls-remove',
-                                tag: 'a',
+                                block: 'btn btn-xs btn-danger',
+                                tag: 'span',
                                 attrs: {
                                     href: '#remove/' + debtor.mid
                                 },
@@ -69,7 +69,7 @@ BEM.DOM.decl({
                     }
                 ]
             })
-        });
+        }, this);
 
         return items;
     }
