@@ -8,8 +8,10 @@ module.exports = function(config) {
             new (require('enb/techs/levels'))({ levels: getLevels(config) }),
             new (require('enb/techs/deps-old'))(),
             new (require('enb/techs/files'))(),
-            new (require('enb/techs/js'))(),
-            new (require('enb/techs/css'))()
+            new (require('enb/techs/js'))({ target: '?.pre.js' }),
+            new (require('enb/techs/css'))(),
+            new (require('enb-xjst/techs/bemhtml'))({ target: '?.bemhtml.js', devMode: false}),
+            new (require('enb/techs/file-merge'))({sources: ['?.pre.js', '?.bemhtml.js'], target: '?.js'})
         ]);
 
         nodeConfig.addTargets([
@@ -41,7 +43,8 @@ function getLevels(config) {
         'libs/bem-bl/blocks-common',
         'libs/bem-bl/blocks-desktop',
         'desktop.blocks',
-        'desktop.modules'
+        'desktop.modules',
+        'dpolyakov.blocks'
     ].map(function(level) {
         return config.resolvePath(level);
     });

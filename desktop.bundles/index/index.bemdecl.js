@@ -1,4 +1,5 @@
 exports.deps = [
     { "block": "page" },
-    { "block": "app" }
+
+    { "block": "debtors" }
 ];
