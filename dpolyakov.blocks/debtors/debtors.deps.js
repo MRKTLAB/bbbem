@@ -26,6 +26,9 @@
             },
             {
                 block: 'debtors-list'
+            },
+            {
+                block: 'debtors-total'
             }
         ]
     }

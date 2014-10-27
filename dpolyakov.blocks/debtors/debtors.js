@@ -29,9 +29,11 @@ BEM.DOM.decl({
     _onUpdate: function() {
         if (!(this._debtorsList)) {
             this._debtorsList = this.findBlockInside('debtors-list');
+            this._debtorsTotal = this.findBlockInside('debtors-total');
         }
 
         this._debtorsList.render(this._data);
+        this._debtorsTotal.render(this._data);
     }
 
 });
