@@ -1,5 +1,5 @@
 ({
     shouldDeps: [
-        { block: 'debtor-item' }
+        { block: 'debtors-item' }
     ]
 })
