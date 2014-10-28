@@ -29,6 +29,9 @@
             },
             {
                 block: 'debtors-total'
+            },
+            {
+                block: 'debtors-form'
             }
         ]
     }

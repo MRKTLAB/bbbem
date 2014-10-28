@@ -5,10 +5,12 @@ BEM.DOM.decl({
     {
     onSetMod: {
         js: {
-            inited: function() {
+            inited: function () {
                 this.__base();
+                this._form = BEM.blocks['debtors-form'];
 
-                this._set(this.params.data)
+                this._set(this.params.data);
+                this._bindToEvents();
             }
         }
     },
@@ -26,14 +28,35 @@ BEM.DOM.decl({
         return this._data;
     },
 
-    _onUpdate: function() {
+    _onUpdate: function () {
         if (!(this._debtorsList)) {
             this._debtorsList = this.findBlockInside('debtors-list');
+        }
+
+        if (!(this._debtorsTotal)) {
             this._debtorsTotal = this.findBlockInside('debtors-total');
         }
 
         this._debtorsList.render(this._data);
         this._debtorsTotal.render(this._data);
+    },
+
+    _bindToEvents: function () {
+        var that = this;
+
+        if (!(this._debtorsItems)) {
+            this._debtorsItems = this.findBlocksInside('debtors-item');
+        }
+
+        _.each(this._debtorsItems, function(item) {
+            item.bindTo('edit', 'click', function() {
+                that._form.render(that, that._data.get(this.params.num - 1));
+            });
+
+            item.bindTo('delete', 'click', function() {
+                console.log('delete', this.params)
+            })
+        })
     }
 
 });

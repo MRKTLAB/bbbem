@@ -1,15 +1,10 @@
 (function () {
-    var debitorsItem = BEM.DOM.decl('debtors-item', {
+    BEM.DOM.decl('debtors-item', {
             onSetMod: {
                 js: {
                     inited: function() {
                         this._name = this.__self.getName();
 
-
-
-                        this.bindTo('edit', 'click', function() {
-                            console.log(this)
-                        })
                     }
                 }
             }
@@ -49,8 +44,8 @@
                             {
                                 block: 'btn btn-xs btn-default',
                                 tag: 'span',
-                                attrs: {
-                                    href: '#edit/' + debtor.mid
+                                js: {
+                                    num: debtor.mid
                                 },
                                 content: 'Edit',
                                 mix: {
@@ -61,8 +56,8 @@
                             {
                                 block: 'btn btn-xs btn-danger',
                                 tag: 'span',
-                                attrs: {
-                                    href: '#remove/' + debtor.mid
+                                js: {
+                                    num: debtor.mid
                                 },
                                 content: 'Remove',
                                 mix: {
