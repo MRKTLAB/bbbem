@@ -5,6 +5,7 @@ modules.define('ViewObligators', ['CollectionObligators', 'ViewObligator'], func
 
         initialize: function () {
             this.collection.on('add', this.addOne, this);
+            this.$list = this.$el.find('#js-book-list');
             this.render();
         },
 
@@ -15,7 +16,7 @@ modules.define('ViewObligators', ['CollectionObligators', 'ViewObligator'], func
 
         addOne: function (obligator) {
             var taskView = new ViewObligator({ model: obligator });
-            this.$el.append(taskView.el);
+            this.$list.append(taskView.el);
         }
     });
 

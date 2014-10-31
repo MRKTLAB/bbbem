@@ -3,8 +3,6 @@ modules.define('ViewObligator', ['ModelObligator'], function(provide, ModelOblig
     var ViewObligator = Backbone.View.extend({
         model: ModelObligator,
 
-        tagName: 'tr',
-
         template: _.template($('#js-book-templates-item').html()),
 
         events: {
