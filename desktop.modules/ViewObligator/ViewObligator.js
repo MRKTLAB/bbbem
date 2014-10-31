@@ -8,7 +8,6 @@ modules.define('ViewObligator', ['ModelObligator'], function(provide, ModelOblig
         template: _.template($('#js-book-templates-item').html()),
 
         events: {
-            //'click .js-book-item__edit': 'edit',
             'click .js-book-item__remove': 'destroy'
         },
 
@@ -30,7 +29,6 @@ modules.define('ViewObligator', ['ModelObligator'], function(provide, ModelOblig
             this.listenTo(this.model, 'change:obligation', function () {
                 this.$('.js-book-item__obligation').text(this.model.get('obligation'));
             });
-
 
             this.render();
         },
