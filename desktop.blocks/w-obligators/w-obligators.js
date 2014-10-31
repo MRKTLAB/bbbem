@@ -1,16 +1,18 @@
-BEM.DOM.decl('w-obligator', {
+BEM.DOM.decl('w-obligators', {
     onSetMod: {
         js: function () {
-            var widgetData = this.params;
+            var widget = this;
+            var widgetEl = widget.domElem;
+            var widgetData = widget.params;
             var obligatorsData = widgetData.obligators;
-
 
             modules.require([ 'CollectionObligators', 'ViewObligators', 'ViewObligatorsTotal', 'ViewFormObligatorEdit', 'ViewFormObligatorCreate' ], function(CollectionObligators, ViewObligators, ViewObligatorsTotal, ViewFormObligatorEdit, ViewFormObligatorCreate) {
                 var obligatorsList = new CollectionObligators(obligatorsData);
 
-                new ViewObligators({el: '#js-book', collection: obligatorsList});
-                new ViewObligatorsTotal({el: '#js-book-footer', collection: obligatorsList});
+                new ViewObligators({el: widgetEl, collection: obligatorsList});
+                new ViewObligatorsTotal({el: widgetEl.find('.b-obligators-total'), collection: obligatorsList});
 
+                // Очевидно, что роутеру здесь (в виджете) не место
                 new Backbone.Router({
                     routes: {
                         'edit/:id': function (id) {
@@ -25,6 +27,8 @@ BEM.DOM.decl('w-obligator', {
 
                 Backbone.history.start();
             });
+
+            console.log('w-obligators: init');
         }
     }
 });

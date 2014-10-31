@@ -1,0 +1,17 @@
+.w-obligators {
+
+}
+
+.w-obligators__list {
+    border: 1px solid blue;
+}
+
+.w-obligators__list-row {
+    border-bottom: 1px solid red;
+}
+
+.w-obligators__list-item {
+    width: 200px;
+    display: inline-block;
+    padding: 5px;
+}

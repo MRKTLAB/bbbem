@@ -2,7 +2,7 @@ modules.define('ViewAddObligator', ['PubSub'], function(provide, PubSub) {
 
     var ViewAddObligator = Backbone.View.extend({
         events: {
-            'click .js-book-add__action': 'add'
+            'click .b-add-obligator': 'add'
         },
 
         add: function (e) {

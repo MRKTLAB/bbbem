@@ -6,6 +6,7 @@
         { block: 'ViewFormObligatorEdit' },
         { block: 'ViewFormObligatorCreate' },
         { block: 'obligator' },
-        { block: 'obligators-total' }
+        { block: 'b-obligators-total' },
+        { block: 'b-add-obligator' }
     ]
 })

@@ -4,7 +4,7 @@ modules.define('ViewObligatorsTotal', ['CollectionObligators'], function(provide
         collection: CollectionObligators,
 
         initialize: function () {
-            this.bemEl = this.$el.bem('obligators-total');
+            this.bemEl = this.$el.bem('b-obligators-total');
             this.listenTo(this.collection, 'add remove change:obligation reset destroy', this.update);
             this.update();
         },

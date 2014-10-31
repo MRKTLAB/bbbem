@@ -5,7 +5,7 @@ modules.define('ViewObligators', ['CollectionObligators', 'ViewObligator'], func
 
         initialize: function () {
             this.collection.on('add', this.addOne, this);
-            this.$list = this.$el.find('#js-book-list');
+            this.$list = this.$el.find('.w-obligators__list');
             this.render();
         },
 

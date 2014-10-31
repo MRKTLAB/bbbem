@@ -3,7 +3,7 @@ modules.define('ViewObligator', ['ModelObligator'], function(provide, ModelOblig
     var ViewObligator = Backbone.View.extend({
         model: ModelObligator,
 
-        template: _.template($('#js-book-templates-item').html()),
+        template: _.template($('#w-obligators__list-item').html()),
 
         events: {
             'click .js-book-item__remove': 'destroy'

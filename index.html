@@ -25,36 +25,39 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="#add" class="js-book-add__action">+ Add</a></li>
+                    <li><a href="#add" class="b-add-obligator">+ Add</a></li>
                 </ul>
             </div>
         </div>
     </div>
 
     <div class="container book">
-        <div class="w-obligator i-bem" onclick="return {'w-obligator':{'obligators': [{'mid': 1, 'firstname': 'Vlad', 'lastname': 'Kurkin', 'phone': '+79251234567', 'obligation': 5000}, {'mid': 2, 'firstname': 'Anton', 'lastname': 'Sachkov', 'phone': '+79251234567', 'obligation': 4000}, {'mid': 3, 'firstname': 'Pavel', 'lastname': 'Masalskiy', 'phone': '+79251234567', 'obligation': 3000}, {'mid': 4, 'firstname': 'Ivan', 'lastname': 'Zasimov', 'phone': '+79251234567', 'obligation': 2000}, {'mid': 5, 'firstname': 'Dmitry', 'lastname': 'Polyakov', 'phone': '+79251234567', 'obligation': 1300}]}}">
-            <div class="add-box"><a href="#add" class="js-book-add__action btn btn-success">+ Add</a></div>
-            <div class="table" id="js-book">
-                <div class="table__row">
-                    <div class="table__cell">Firstname</div>
-                    <div class="table__cell">Lastname</div>
-                    <div class="table__cell">Phone</div>
-                    <div class="table__cell">Obligation</div>
-                    <div class="table__cell">Actions</div>
+
+        <div class="w-obligators i-bem" onclick="return {'w-obligators':{'obligators': [{'mid': 1, 'firstname': 'Vlad', 'lastname': 'Kurkin', 'phone': '+79251234567', 'obligation': 5000}, {'mid': 2, 'firstname': 'Anton', 'lastname': 'Sachkov', 'phone': '+79251234567', 'obligation': 4000}, {'mid': 3, 'firstname': 'Pavel', 'lastname': 'Masalskiy', 'phone': '+79251234567', 'obligation': 3000}, {'mid': 4, 'firstname': 'Ivan', 'lastname': 'Zasimov', 'phone': '+79251234567', 'obligation': 2000}, {'mid': 5, 'firstname': 'Dmitry', 'lastname': 'Polyakov', 'phone': '+79251234567', 'obligation': 1300}]}}">
+            <a href="#add" class="b-add-obligator btn btn-success">+ Add</a>
+
+            <div class="w-obligators__content" id="js-book">
+                <div class="w-obligators__list-row">
+                    <div class="w-obligators__list-item">Firstname</div>
+                    <div class="w-obligators__list-item">Lastname</div>
+                    <div class="w-obligators__list-item">Phone</div>
+                    <div class="w-obligators__list-item">Obligation</div>
+                    <div class="w-obligators__list-item">Actions</div>
                 </div>
-                <div id="js-book-list" class="table__body"></div>
-                <div id="js-book-footer" class="table__footer obligators-total i-bem" onclick="return {'obligators-total':{}}"></div>
+                <div class="w-obligators__list"></div>
+                <div class="b-obligators-total i-bem" onclick="return {'b-obligators-total':{}}"></div>
             </div>
         </div>
+
     </div>
 
-    <script type="text/template" id="js-book-templates-item">
-        <div class="table__row">
-            <div class="js-book-item__firstname table__cell"><%= firstname %></div>
-            <div class="js-book-item__lastname table__cell"><%= lastname %></div>
-            <div class="js-book-item__phone table__cell"><%= phone %></div>
-            <div class="js-book-item__obligation table__cell"><%= obligation %></div>
-            <div class="table__cell">
+    <script type="text/template" id="w-obligators__list-item">
+        <div class="w-obligators__list-row">
+            <div class="js-book-item__firstname w-obligators__list-item"><%= firstname %></div>
+            <div class="js-book-item__lastname w-obligators__list-item"><%= lastname %></div>
+            <div class="js-book-item__phone w-obligators__list-item"><%= phone %></div>
+            <div class="js-book-item__obligation w-obligators__list-item"><%= obligation %></div>
+            <div class="w-obligators__list-item">
                 <a href="#edit/<%= mid %>" type="button" class="btn btn-xs btn-default js-book-item__edit">Edit</a>
                 <button type="button" class="btn btn-xs btn-danger js-book-item__remove">Remove</button>
             </div>
