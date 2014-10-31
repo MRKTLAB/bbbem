@@ -1,4 +1,4 @@
 exports.deps = [
-    { "block": "page" },
+    { "block": "b-page" },
     { "block": "w-obligators"}
 ];

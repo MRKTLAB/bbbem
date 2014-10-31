@@ -1,7 +1,7 @@
-BEM.DOM.decl('b-obligators-total', {
+BEM.DOM.decl('b-obligator', {
     onSetMod: {
         js: function () {
-            console.log('b-obligators-total: init');
+            console.log('b-obligator: init');
         }
     },
 

@@ -16,7 +16,7 @@ modules.define('ViewObligators', ['CollectionObligators', 'ViewObligator'], func
 
         addOne: function (obligator) {
             var taskView = new ViewObligator({ model: obligator });
-            this.$list.append(taskView.el);
+            BEM.DOM.append(this.$list[0], taskView.el);
         }
     });
 

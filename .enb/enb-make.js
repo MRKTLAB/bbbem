@@ -40,8 +40,10 @@ function getLevels(config) {
     return [
         'libs/bem-bl/blocks-common',
         'libs/bem-bl/blocks-desktop',
+        'desktop.libs',
+        'desktop.mvc',
         'desktop.blocks',
-        'desktop.modules'
+        'desktop.widgets'
     ].map(function(level) {
         return config.resolvePath(level);
     });
