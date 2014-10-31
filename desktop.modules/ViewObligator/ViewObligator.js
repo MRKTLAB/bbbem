@@ -6,26 +6,26 @@ modules.define('ViewObligator', ['ModelObligator'], function(provide, ModelOblig
         template: _.template($('#w-obligators__list-item').html()),
 
         events: {
-            'click .js-book-item__remove': 'destroy'
+            'click .b-obligator__remove': 'destroy'
         },
 
         initialize: function () {
             this.listenTo(this.model, 'destroy', this.remove);
 
             this.listenTo(this.model, 'change:firstname', function () {
-                this.$('.js-book-item__firstname').text(this.model.get('firstname'));
+                this.$('.b-obligator__firstname').text(this.model.get('firstname'));
             });
 
             this.listenTo(this.model, 'change:lastname', function () {
-                this.$('.js-book-item__lastname').text(this.model.get('lastname'));
+                this.$('.b-obligator__lastname').text(this.model.get('lastname'));
             });
 
             this.listenTo(this.model, 'change:phone', function () {
-                this.$('.js-book-item__phone').text(this.model.get('phone'));
+                this.$('.b-obligator__phone').text(this.model.get('phone'));
             });
 
             this.listenTo(this.model, 'change:obligation', function () {
-                this.$('.js-book-item__obligation').text(this.model.get('obligation'));
+                this.$('.b-obligator__obligation').text(this.model.get('obligation'));
             });
 
             this.render();

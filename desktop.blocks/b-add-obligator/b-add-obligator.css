@@ -2,3 +2,7 @@
     display: inline-block;
     margin-bottom: 10px;
 }
+
+.b-add-obligator_type_nomargin {
+    margin-bottom: 0;
+}
