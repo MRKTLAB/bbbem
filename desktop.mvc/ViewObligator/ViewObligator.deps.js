@@ -1,5 +1,6 @@
 ({
     shouldDeps: [
-        { block: 'ModelObligator' }
+        { block: 'ModelObligator' },
+        { block: 'b-obligator' }
     ]
 })

@@ -1,6 +1,7 @@
 ({
     shouldDeps: [
         { block: 'ViewObligator' },
-        { block: 'CollectionObligators' }
+        { block: 'CollectionObligators' },
+        { block: 'b-obligator' }
     ]
 })

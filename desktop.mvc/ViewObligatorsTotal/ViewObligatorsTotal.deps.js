@@ -1,5 +1,6 @@
 ({
     shouldDeps: [
-        { block: 'CollectionObligators' }
+        { block: 'CollectionObligators' },
+        { block: 'b-obligators-total' }
     ]
 })

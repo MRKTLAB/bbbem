@@ -1,4 +1,4 @@
-modules.define('ViewAddObligator', ['PubSub'], function(provide, PubSub) {
+modules.define('ViewAddObligator', function(provide) {
 
     var ViewAddObligator = Backbone.View.extend({
         events: {

@@ -1,4 +1,0 @@
-module "obligator"
-
-match .obligator {
-}

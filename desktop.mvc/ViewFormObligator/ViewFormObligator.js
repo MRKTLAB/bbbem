@@ -31,6 +31,7 @@ modules.define('ViewFormObligator', function(provide) {
 
         hide: function () {
             this.remove();
+            Backbone.history.navigate('');
         },
 
         render: function () {

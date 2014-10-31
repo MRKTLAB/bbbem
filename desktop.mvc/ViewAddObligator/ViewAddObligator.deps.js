@@ -1,5 +1,6 @@
 ({
     shouldDeps: [
-        { block: 'PubSub' }
+        { block: 'PubSub' },
+        { block: 'b-add-obligator' }
     ]
 })
