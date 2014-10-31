@@ -31,7 +31,7 @@
 1. Инициализиурем виджет, в **onSetMode** виджета пишем логику взаимодействия компонентов приложения
     1. Создаем инстансы **Backbone Collection** или **Backbone Model**
     1. Создаем инстансы **Backbone View/Controller** и при необходимости прокидываем туда **Backbone Collection** или **Backbone Model**
-1. Дуальное взаимодействие **View (DOM)** с **Backbone View/Controller** происходит через API и события **BEM-блока**
+1. Двунаправленное взаимодействие **View (DOM)** с **Backbone View/Controller** происходит через API и события **BEM-блока**
 
 ### Роутинг
 ...coming soon...
