@@ -5,7 +5,19 @@ BEM.DOM.decl('b-obligator', {
         }
     },
 
-    render: function (count, total) {
-        this.domElem.text('Total obligators: '+ count +', $'+total);
+    setFirstName: function (firstname) {
+        this.findElem('firstname').text(firstname);
+    },
+
+    setLastName: function (lastname) {
+        this.findElem('lastname').text(lastname);
+    },
+
+    setPhone: function (phone) {
+        this.findElem('phone').text(phone);
+    },
+
+    setObligation: function (obligation) {
+        this.findElem('obligation').text(obligation);
     }
 });

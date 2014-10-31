@@ -10,30 +10,37 @@ modules.define('ViewObligator', ['ModelObligator'], function(provide, ModelOblig
         },
 
         initialize: function () {
-            this.listenTo(this.model, 'destroy', this.remove);
+            this.listenTo(this.model, 'destroy', this.removeBemView);
 
             this.listenTo(this.model, 'change:firstname', function () {
-                this.$('.b-obligator__firstname').text(this.model.get('firstname'));
+                this.bemEl.setFirstName(this.model.get('firstname'));
             });
 
             this.listenTo(this.model, 'change:lastname', function () {
-                this.$('.b-obligator__lastname').text(this.model.get('lastname'));
+                this.bemEl.setLastName(this.model.get('lastname'));
             });
 
             this.listenTo(this.model, 'change:phone', function () {
-                this.$('.b-obligator__phone').text(this.model.get('phone'));
+                this.bemEl.setPhone(this.model.get('phone'));
             });
 
             this.listenTo(this.model, 'change:obligation', function () {
-                this.$('.b-obligator__obligation').text(this.model.get('obligation'));
+                this.bemEl.setObligation(this.model.get('obligation'));
             });
 
             this.render();
+
+            this.bemEl = this.$el.find('.b-obligator').bem('b-obligator');
         },
 
         render: function () {
             this.$el.html(this.template(this.model.toJSON()));
             return this;
+        },
+
+        removeBemView: function () {
+            this.bemEl.destruct();
+            this.remove();
         },
 
         destroy: function (e) {
