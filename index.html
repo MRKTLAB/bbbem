@@ -25,7 +25,13 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="#add" class="b-add-obligator b-add-obligator_type_nomargin">+ Add</a></li>
+                    <li>
+                        <!--- widget: w-obligators-total [begin] --->
+                        <div class="w-obligators-total w-obligators-total_size_small i-bem" onclick="return {'w-obligators-total':{'obligators': [{'mid': 1, 'firstname': 'Vlad', 'lastname': 'Kurkin', 'phone': '+79251234567', 'obligation': 5000}, {'mid': 2, 'firstname': 'Anton', 'lastname': 'Sachkov', 'phone': '+79251234567', 'obligation': 4000}, {'mid': 3, 'firstname': 'Pavel', 'lastname': 'Masalskiy', 'phone': '+79251234567', 'obligation': 3000}, {'mid': 4, 'firstname': 'Ivan', 'lastname': 'Zasimov', 'phone': '+79251234567', 'obligation': 2000}, {'mid': 5, 'firstname': 'Dmitry', 'lastname': 'Polyakov', 'phone': '+79251234567', 'obligation': 1300}]}}">
+                            <div class="b-obligators-total b-obligators-total_size_small i-bem" onclick="return {'b-obligators-total':{}}"></div>
+                        </div>
+                        <!--- widget: w-obligators-total [end] --->
+                    </li>
                 </ul>
             </div>
         </div>
@@ -46,7 +52,13 @@
                     <div class="w-obligators__list-item">Actions</div>
                 </div>
                 <div class="w-obligators__list"></div>
-                <div class="b-obligators-total i-bem" onclick="return {'b-obligators-total':{}}"></div>
+
+                <!--- widget: w-obligators-total [begin] --->
+                <div class="w-obligators-total i-bem" onclick="return {'w-obligators-total':{'obligators': [{'mid': 1, 'firstname': 'Vlad', 'lastname': 'Kurkin', 'phone': '+79251234567', 'obligation': 5000}, {'mid': 2, 'firstname': 'Anton', 'lastname': 'Sachkov', 'phone': '+79251234567', 'obligation': 4000}, {'mid': 3, 'firstname': 'Pavel', 'lastname': 'Masalskiy', 'phone': '+79251234567', 'obligation': 3000}, {'mid': 4, 'firstname': 'Ivan', 'lastname': 'Zasimov', 'phone': '+79251234567', 'obligation': 2000}, {'mid': 5, 'firstname': 'Dmitry', 'lastname': 'Polyakov', 'phone': '+79251234567', 'obligation': 1300}]}}">
+                    <div class="b-obligators-total i-bem" onclick="return {'b-obligators-total':{}}"></div>
+                </div>
+                <!--- widget: w-obligators-total [end] --->
+
             </div>
         </div>
         <!--- widget (main app): w-obligators [end] --->

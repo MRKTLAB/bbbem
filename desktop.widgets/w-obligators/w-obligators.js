@@ -6,11 +6,10 @@ BEM.DOM.decl('w-obligators', {
             var widgetData = widget.params;
             var obligatorsData = widgetData.obligators;
 
-            modules.require([ 'CollectionObligators', 'ViewObligators', 'ViewObligatorsTotal', 'ViewFormObligatorEdit', 'ViewFormObligatorCreate' ], function(CollectionObligators, ViewObligators, ViewObligatorsTotal, ViewFormObligatorEdit, ViewFormObligatorCreate) {
+            modules.require([ 'CollectionObligators', 'ViewObligators', 'ViewFormObligatorEdit', 'ViewFormObligatorCreate' ], function(CollectionObligators, ViewObligators, ViewFormObligatorEdit, ViewFormObligatorCreate) {
                 var obligatorsList = new CollectionObligators(obligatorsData);
 
                 new ViewObligators({el: widgetEl, collection: obligatorsList});
-                new ViewObligatorsTotal({el: widgetEl.find('.b-obligators-total'), collection: obligatorsList});
 
                 // Очевидно, что роутеру здесь (в виджете) не место
                 new Backbone.Router({

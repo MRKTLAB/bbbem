@@ -3,8 +3,9 @@ modules.define('ViewObligatorsTotal', ['CollectionObligators'], function(provide
     var ViewObligatorsTotal = Backbone.View.extend({
         collection: CollectionObligators,
 
-        initialize: function () {
-            this.bemEl = this.$el.bem('b-obligators-total');
+        initialize: function (params) {
+            this.bemEl = params.bemEl;
+            this.bemTotal = this.bemEl.findBlockInside('b-obligators-total');
             this.listenTo(this.collection, 'add remove change:obligation reset destroy', this.update);
             this.update();
         },
@@ -15,7 +16,7 @@ modules.define('ViewObligatorsTotal', ['CollectionObligators'], function(provide
         },
 
         render: function (count, total) {
-            this.bemEl.render(count, total);
+            this.bemTotal.render(count, total);
             return this;
         }
     });
