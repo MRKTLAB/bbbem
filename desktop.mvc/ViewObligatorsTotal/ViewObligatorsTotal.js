@@ -1,6 +1,6 @@
-modules.define('ViewObligatorsTotal', ['CollectionObligators'], function(provide, CollectionObligators) {
+modules.define('ViewObligatorsTotal', ['BemView', 'CollectionObligators'], function(provide, BemView, CollectionObligators) {
 
-    var ViewObligatorsTotal = Backbone.View.extend({
+    var ViewObligatorsTotal = BemView.extend({
         collection: CollectionObligators,
 
         initialize: function (params) {

@@ -8,14 +8,12 @@ BEM.DOM.decl({block:'w-obligators-total'}, {
     onSetMod: {
         js: function () {
             var widget = this;
-            var widgetEl = widget.domElem;
-            var widgetData = widget.params;
-            var obligatorsData = widgetData.obligators;
 
-            modules.require([ 'CollectionObligators', 'ViewObligatorsTotal' ], function(CollectionObligators, ViewObligatorsTotal) {
-                var obligatorsList = new CollectionObligators(obligatorsData);
-
-                new ViewObligatorsTotal({bemEl: widget, collection: obligatorsList});
+            modules.require([ 'PubSub', 'ViewObligatorsTotal' ], function(PubSub, ViewObligatorsTotal) {
+                PubSub.on('modules:obligators:init', function (obligatorsCollection) {
+                    new ViewObligatorsTotal({bemEl: widget, collection: obligatorsCollection});
+                    console.log('w-obligators-total: create Backbone view with data from module "obligator"');
+                });
             });
 
             console.log('w-obligators-total: init');

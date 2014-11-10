@@ -40,7 +40,7 @@
     <div class="container book">
 
         <!--- widget (main app): w-obligators [begin] --->
-        <div class="w-obligators i-bem" onclick="return {'w-obligators':{'obligators': [{'mid': 1, 'firstname': 'Vlad', 'lastname': 'Kurkin', 'phone': '+79251234567', 'obligation': 5000}, {'mid': 2, 'firstname': 'Anton', 'lastname': 'Sachkov', 'phone': '+79251234567', 'obligation': 4000}, {'mid': 3, 'firstname': 'Pavel', 'lastname': 'Masalskiy', 'phone': '+79251234567', 'obligation': 3000}, {'mid': 4, 'firstname': 'Ivan', 'lastname': 'Zasimov', 'phone': '+79251234567', 'obligation': 2000}, {'mid': 5, 'firstname': 'Dmitry', 'lastname': 'Polyakov', 'phone': '+79251234567', 'obligation': 1300}]}}">
+        <div class="w-obligators i-bem" onclick="return {'w-obligators':{}}">
             <a href="#add" class="b-add-obligator btn btn-success">+ Add</a>
 
             <div class="w-obligators__content">
@@ -54,7 +54,7 @@
                 <div class="w-obligators__list"></div>
 
                 <!--- widget: w-obligators-total [begin] --->
-                <div class="w-obligators-total i-bem" onclick="return {'w-obligators-total':{'obligators': [{'mid': 1, 'firstname': 'Vlad', 'lastname': 'Kurkin', 'phone': '+79251234567', 'obligation': 5000}, {'mid': 2, 'firstname': 'Anton', 'lastname': 'Sachkov', 'phone': '+79251234567', 'obligation': 4000}, {'mid': 3, 'firstname': 'Pavel', 'lastname': 'Masalskiy', 'phone': '+79251234567', 'obligation': 3000}, {'mid': 4, 'firstname': 'Ivan', 'lastname': 'Zasimov', 'phone': '+79251234567', 'obligation': 2000}, {'mid': 5, 'firstname': 'Dmitry', 'lastname': 'Polyakov', 'phone': '+79251234567', 'obligation': 1300}]}}">
+                <div class="w-obligators-total i-bem" onclick="return {'w-obligators-total':{}}">
                     <div class="b-obligators-total i-bem" onclick="return {'b-obligators-total':{}}"></div>
                 </div>
                 <!--- widget: w-obligators-total [end] --->
@@ -74,6 +74,7 @@
             <div class="b-obligator__controls w-obligators__list-item">
                 <a href="#edit/<%= mid %>" type="button" class="btn btn-xs btn-default b-obligator__edit">Edit</a>
                 <button type="button" class="btn btn-xs btn-danger b-obligator__remove">Remove</button>
+                <button type="button" class="btn btn-xs btn-danger b-obligator__full-redraw">Full redraw</button>
             </div>
         </div>
     </script>
@@ -131,6 +132,12 @@
 
     <script src="desktop.bundles/common/_common.js"></script>
     <script src="desktop.bundles/index/_index.js"></script>
-    <script>BEM.DOM.init();</script>
+    <script>
+        BEM.DOM.init();
+
+        modules.require(['obligators'], function(obligators) {
+            obligators.setObligationData([{'mid': 1, 'firstname': 'Vlad', 'lastname': 'Kurkin', 'phone': '+79251234567', 'obligation': 5000}, {'mid': 2, 'firstname': 'Anton', 'lastname': 'Sachkov', 'phone': '+79251234567', 'obligation': 4000}, {'mid': 3, 'firstname': 'Pavel', 'lastname': 'Masalskiy', 'phone': '+79251234567', 'obligation': 3000}, {'mid': 4, 'firstname': 'Ivan', 'lastname': 'Zasimov', 'phone': '+79251234567', 'obligation': 2000}, {'mid': 5, 'firstname': 'Dmitry', 'lastname': 'Polyakov', 'phone': '+79251234567', 'obligation': 1300}]);
+        });
+    </script>
 </body>
 </html>

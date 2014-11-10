@@ -1,16 +1,17 @@
-modules.define('ViewObligator', ['ModelObligator'], function(provide, ModelObligator) {
+modules.define('ViewObligator', ['BemView', 'ModelObligator'], function(provide, BemView, ModelObligator) {
 
-    var ViewObligator = Backbone.View.extend({
+    var ViewObligator = BemView.extend({
         model: ModelObligator,
 
         template: _.template($('#w-obligators__list-item').html()),
 
         events: {
-            'click .b-obligator__remove': 'destroy'
+            'click .b-obligator__remove': 'destroy',
+            'click .b-obligator__full-redraw': 'fullRedraw'
         },
 
         initialize: function () {
-            this.listenTo(this.model, 'destroy', this.removeBemView);
+            this.listenTo(this.model, 'destroy', this.remove);
 
             this.listenTo(this.model, 'change:firstname', function () {
                 this.bemEl.setFirstName(this.model.get('firstname'));
@@ -28,19 +29,21 @@ modules.define('ViewObligator', ['ModelObligator'], function(provide, ModelOblig
                 this.bemEl.setObligation(this.model.get('obligation'));
             });
 
-            this.render();
+            this.renderBemView();
+        },
 
-            this.bemEl = this.$el.find('.b-obligator').bem('b-obligator');
+        fullRedraw: function () {
+            this.render();
+        },
+
+        renderBemView: function () {
+            this.removeBemView();
+            this.render();
+            this.createBemView('b-obligator');
         },
 
         render: function () {
             this.$el.html(this.template(this.model.toJSON()));
-            return this;
-        },
-
-        removeBemView: function () {
-            this.bemEl.destruct();
-            this.remove();
         },
 
         destroy: function (e) {

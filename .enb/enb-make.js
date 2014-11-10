@@ -41,6 +41,7 @@ function getLevels(config) {
         'libs/bem-bl/blocks-common',
         'libs/bem-bl/blocks-desktop',
         'desktop.libs',
+        'desktop.modules',
         'desktop.mvc',
         'desktop.blocks',
         'desktop.widgets'

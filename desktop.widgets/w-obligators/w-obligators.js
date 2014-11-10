@@ -2,29 +2,28 @@ BEM.DOM.decl('w-obligators', {
     onSetMod: {
         js: function () {
             var widget = this;
-            var widgetEl = widget.domElem;
-            var widgetData = widget.params;
-            var obligatorsData = widgetData.obligators;
 
-            modules.require([ 'CollectionObligators', 'ViewObligators', 'ViewFormObligatorEdit', 'ViewFormObligatorCreate' ], function(CollectionObligators, ViewObligators, ViewFormObligatorEdit, ViewFormObligatorCreate) {
-                var obligatorsList = new CollectionObligators(obligatorsData);
+            modules.require([ 'PubSub', 'ViewObligators', 'ViewFormObligatorEdit', 'ViewFormObligatorCreate' ], function(PubSub, ViewObligators, ViewFormObligatorEdit, ViewFormObligatorCreate) {
 
-                new ViewObligators({el: widgetEl, collection: obligatorsList});
+                PubSub.on('modules:obligators:init', function (obligatorsCollection) {
+                    new ViewObligators({bemEl: widget, collection: obligatorsCollection});
+                    console.log('w-obligators: create Backbone view with data from module "obligator"');
 
-                // Очевидно, что роутеру здесь (в виджете) не место
-                new Backbone.Router({
-                    routes: {
-                        'edit/:id': function (id) {
-                            new ViewFormObligatorEdit({model: obligatorsList.findWhere({'mid': Number(id)})});
-                        },
+                    // Очевидно, что роутеру здесь (в виджете) не место
+                    new Backbone.Router({
+                        routes: {
+                            'edit/:id': function (id) {
+                                new ViewFormObligatorEdit({model: obligatorsCollection.findWhere({'mid': Number(id)})});
+                            },
 
-                        'add': function () {
-                            new ViewFormObligatorCreate();
+                            'add': function () {
+                                new ViewFormObligatorCreate();
+                            }
                         }
-                    }
-                });
+                    });
 
-                Backbone.history.start();
+                    Backbone.history.start();
+                });
             });
 
             console.log('w-obligators: init');

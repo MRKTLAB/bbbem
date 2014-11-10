@@ -1,11 +1,12 @@
-modules.define('ViewObligators', ['CollectionObligators', 'ViewObligator'], function(provide, CollectionObligators, ViewObligator) {
+modules.define('ViewObligators', ['BemView', 'CollectionObligators', 'ViewObligator'], function(provide, BemView, CollectionObligators, ViewObligator) {
 
-    var ViewObligators = Backbone.View.extend({
+    var ViewObligators = BemView.extend({
         collection: CollectionObligators,
 
-        initialize: function () {
+        initialize: function (params) {
             this.collection.on('add', this.addOne, this);
-            this.$list = this.$el.find('.w-obligators__list');
+            this.bemEl = params.bemEl;
+            this.bemList = this.bemEl.findBlockInside('w-obligators__list');
             this.render();
         },
 
@@ -16,7 +17,7 @@ modules.define('ViewObligators', ['CollectionObligators', 'ViewObligator'], func
 
         addOne: function (obligator) {
             var taskView = new ViewObligator({ model: obligator });
-            BEM.DOM.append(this.$list[0], taskView.el);
+            BEM.DOM.append(this.bemList.domElem, taskView.el);
         }
     });
 
