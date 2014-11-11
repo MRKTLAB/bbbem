@@ -2,16 +2,27 @@
 
 }
 
-.w-obligators__list {
-    border: 1px solid blue;
+.w-obligators__list-row {
+    border-bottom: 1px solid #ccc;
 }
 
-.w-obligators__list-row {
-    border-bottom: 1px solid red;
+.w-obligators__list-row_position_first {
+    font-weight: bold;
 }
 
 .w-obligators__list-item {
     width: 200px;
     display: inline-block;
+    padding: 5px;
+}
+
+.w-obligators__total {
+    margin: 5px 0 15px 0;
+    padding: 5px;
+    text-align: left;
+    font-weight: bold;
+}
+
+.w-obligators__header {
     padding: 5px;
 }
