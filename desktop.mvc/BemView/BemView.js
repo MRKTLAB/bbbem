@@ -6,7 +6,7 @@ modules.define('BemView', function(provide) {
                 return;
             }
 
-            this.bemEl = this.$el.children('*').bem(blockName);
+            this.bemEl = this.$el.children('.i-bem').bem(blockName);
         },
 
         removeBemView: function () {
