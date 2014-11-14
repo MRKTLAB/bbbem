@@ -3,9 +3,8 @@ modules.define('ViewObligatorsTotal', ['BemView', 'CollectionObligators'], funct
     var ViewObligatorsTotal = BemView.extend({
         collection: CollectionObligators,
 
-        initialize: function (params) {
-            this.bemEl = params.bemEl;
-            this.bemTotal = this.bemEl.findBlockInside('b-obligators-total');
+        initBemView: function () {
+            this.bemBlockTotal = this.bemBlockEl.findBlockInside('b-obligators-total');
             this.listenTo(this.collection, 'add remove change:obligation reset destroy', this.update);
             this.update();
         },
@@ -16,7 +15,7 @@ modules.define('ViewObligatorsTotal', ['BemView', 'CollectionObligators'], funct
         },
 
         render: function (count, total) {
-            this.bemTotal.render(count, total);
+            this.bemBlockTotal.render(count, total);
             return this;
         }
     });
