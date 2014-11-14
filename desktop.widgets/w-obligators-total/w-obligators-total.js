@@ -4,7 +4,7 @@
  * @author andychups <andychups@yandex-team.ru>
  */
 
-BEM.DOM.decl({block:'w-obligators-total'}, {
+BEM.DOM.decl('w-obligators-total', {
     onSetMod: {
         js: function () {
             var widget = this;
