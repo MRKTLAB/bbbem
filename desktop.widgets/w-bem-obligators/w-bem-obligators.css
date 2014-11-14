@@ -1,0 +1,28 @@
+.w-bem-obligators {
+
+}
+
+.w-bem-obligators__list-row {
+    border-bottom: 1px solid #ccc;
+}
+
+.w-bem-obligators__list-row_position_first {
+    font-weight: bold;
+}
+
+.w-bem-obligators__list-item {
+    width: 200px;
+    display: inline-block;
+    padding: 5px;
+}
+
+.w-bem-obligators__total {
+    margin: 5px 0 15px 0;
+    padding: 5px;
+    text-align: left;
+    font-weight: bold;
+}
+
+.w-bem-obligators__header {
+    padding: 5px;
+}

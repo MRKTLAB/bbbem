@@ -1,6 +1,7 @@
 module.exports = function(config) {
     config.node('desktop.bundles/common');
     config.node('desktop.bundles/index');
+    config.node('desktop.bundles/index-bem');
 
     config.nodeMask(/desktop\.bundles\/.*/, function(nodeConfig) {
         nodeConfig.addTechs([
