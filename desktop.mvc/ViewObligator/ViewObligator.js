@@ -10,40 +10,30 @@ modules.define('ViewObligator', ['BemView', 'ModelObligator'], function(provide,
             'click .b-obligator__full-redraw': 'fullRedraw'
         },
 
-        initialize: function () {
+        initBemView: function () {
             this.listenTo(this.model, 'destroy', this.remove);
 
             this.listenTo(this.model, 'change:firstname', function () {
-                this.bemEl.setFirstName(this.model.get('firstname'));
+                this.bemBlockEl.setFirstName(this.model.get('firstname'));
             });
 
             this.listenTo(this.model, 'change:lastname', function () {
-                this.bemEl.setLastName(this.model.get('lastname'));
+                this.bemBlockEl.setLastName(this.model.get('lastname'));
             });
 
             this.listenTo(this.model, 'change:phone', function () {
-                this.bemEl.setPhone(this.model.get('phone'));
+                this.bemBlockEl.setPhone(this.model.get('phone'));
             });
 
             this.listenTo(this.model, 'change:obligation', function () {
-                this.bemEl.setObligation(this.model.get('obligation'));
+                this.bemBlockEl.setObligation(this.model.get('obligation'));
             });
 
-            this.renderBemView();
-        },
-
-        fullRedraw: function () {
             this.render();
-        },
-
-        renderBemView: function () {
-            this.removeBemView();
-            this.render();
-            this.createBemView('b-obligator');
         },
 
         render: function () {
-            this.$el.html(this.template(this.model.toJSON()));
+            this.renderBemView(this.template(this.model.toJSON()));
         },
 
         destroy: function (e) {

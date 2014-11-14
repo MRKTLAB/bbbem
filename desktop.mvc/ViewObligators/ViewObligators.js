@@ -3,10 +3,9 @@ modules.define('ViewObligators', ['BemView', 'CollectionObligators', 'ViewObliga
     var ViewObligators = BemView.extend({
         collection: CollectionObligators,
 
-        initialize: function (params) {
+        initBemView: function () {
             this.collection.on('add', this.addOne, this);
-            this.bemEl = params.bemEl;
-            this.bemList = this.bemEl.findBlockInside('w-obligators__list');
+            this.bemBlockList = this.bemBlockEl.findBlockInside('w-obligators__list');
             this.render();
         },
 
@@ -16,8 +15,12 @@ modules.define('ViewObligators', ['BemView', 'CollectionObligators', 'ViewObliga
         },
 
         addOne: function (obligator) {
-            var taskView = new ViewObligator({ model: obligator });
-            BEM.DOM.append(this.bemList.domElem, taskView.el);
+            var listObligatorsItem = new ViewObligator({
+                model: obligator,
+                bemBlockName: 'b-obligator'
+            });
+
+            BEM.DOM.append(this.bemBlockList.domElem, listObligatorsItem.el);
         }
     });
 

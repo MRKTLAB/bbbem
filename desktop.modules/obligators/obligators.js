@@ -5,9 +5,9 @@ modules.define('obligators', ['PubSub', 'CollectionObligators'], function(provid
     api.setObligationData = function (data) {
         obligatorsCollection = new CollectionObligators(data);
 
-        setTimeout(function () {
+        //setTimeout(function () {
             PubSub.trigger('modules:obligators:init', obligatorsCollection);
-        }, 5000);
+        //}, 5000);
     };
 
     api.getObligationData = function () {
