@@ -8,6 +8,7 @@
 1. **desktop.bundles** – страничные бандлы (common-bundle, page-bundle)
 1. **desktop.libs** – блоки с библиотеками (backbone, underscore, jquery)
 1. **desktop.blocks** – BEM-блоки с i-bem API и Yate шаблонами
+1. **desktop.modules** – модули с бизнес-логикой и хелперы
 1. **desktop.mvc** – Backbone: Model, View/Controller, Collection
 1. **desktop.widgets** – Приложения: Backbone + i-bem
 
@@ -18,8 +19,8 @@
 В случае, если кусок представления еще не существует в DOM, то нам необходимо его вставить, проинициализировать и после использовать.
 Так, как доступ к API блока мы можем получить, только после того, как он появится в DOM, то код создания вью (с бем блоком) нужно где-то хранить.
 
-w-obligators-total VS w-bem-obligators-total – тут все ок, Backbone BemView легко заменяется чисто i-bem.js
-w-obligators VS w-bem-obligators – а вот тут болт, и i-bem.js не готов к этой задаче
+- **w-obligators-total VS w-bem-obligators-total** – тут все ок, Backbone BemView легко заменяется чисто i-bem.js
+- **w-obligators VS w-bem-obligators** – а вот тут болт, и i-bem.js не готов к этой задаче
 
 ## Концепция SPA
 Приложение представляет из себя виджет (BEM блок), который объединяет в себе:
