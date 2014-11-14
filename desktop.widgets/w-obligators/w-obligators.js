@@ -3,7 +3,7 @@ BEM.DOM.decl('w-obligators', {
         js: function () {
             var widget = this;
 
-            modules.require([ 'PubSub', 'ViewObligators', 'ViewFormObligatorEdit', 'ViewFormObligatorCreate' ], function(PubSub, ViewObligators, ViewFormObligatorEdit, ViewFormObligatorCreate) {
+            modules.require([ 'PubSub', 'ViewObligators'], function(PubSub, ViewObligators) {
 
                 PubSub.on('modules:obligators:init', function (obligatorsCollection) {
                     new ViewObligators({
