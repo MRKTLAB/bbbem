@@ -12,11 +12,11 @@ BEM.DOM.decl({block:'w-bem-obligators-total'}, {
             modules.require([ 'PubSub', 'ViewObligatorsTotal' ], function(PubSub, ViewObligatorsTotal) {
                 PubSub.on('modules:obligators:init', function (obligatorsCollection) {
                     new ViewObligatorsTotal({bemEl: widget, collection: obligatorsCollection});
-                    console.log('w-bem-obligators-total: create Backbone view with data from module "obligator"');
+                    console.log('w-obligators-total: create Backbone view with data from module "obligator"');
                 });
             });
 
-            console.log('w-bem-obligators-total: init');
+            console.log('w-obligators-total: init');
         }
     }
 });
