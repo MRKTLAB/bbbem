@@ -1,1 +1,1 @@
-include('../../libs/underscore/underscore.js');
+include('../../node_modules/underscore/underscore.js');

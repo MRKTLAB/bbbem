@@ -39,8 +39,8 @@ module.exports = function(config) {
 
 function getLevels(config) {
     return [
-        'libs/bem-bl/blocks-common',
-        'libs/bem-bl/blocks-desktop',
+        'node_modules/bem-bl/blocks-common',
+        'node_modules/bem-bl/blocks-desktop',
         'desktop.libs',
         'desktop.modules',
         'desktop.mvc',

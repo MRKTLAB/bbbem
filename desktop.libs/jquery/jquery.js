@@ -1,1 +1,1 @@
-include('../../libs/jquery/dist/jquery.min.js');
+include('../../node_modules/jquery/dist/jquery.min.js');

@@ -1,1 +1,1 @@
-include('../../libs/backbone/backbone.js');
+include('../../node_modules/backbone/backbone.js');
