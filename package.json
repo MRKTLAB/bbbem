@@ -7,7 +7,6 @@
         "backbone": "^1.1.2",
         "bem-bl": "git://github.com/bem/bem-bl.git#v2.3.2",
         "bootstrap": "^3.4.1",
-        "enb": "0.13.5",
         "jquery": "^3.4.1",
         "underscore": "^1.9.2",
         "ym": "git://github.com/ymaps/modules.git"
@@ -19,5 +18,12 @@
         "dev": "npm run build && npm run start"
     },
     "author": "andychups",
-    "license": "BSD-2-Clause"
+    "license": "BSD-2-Clause",
+    "devDependencies": {
+        "enb": "^1.5.1",
+        "enb-bem-techs": "^2.2.2",
+        "enb-borschik": "^2.8.0",
+        "enb-js": "^1.1.1",
+        "enb-stylus": "^3.0.0"
+    }
 }

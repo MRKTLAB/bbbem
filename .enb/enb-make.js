@@ -1,39 +1,35 @@
+const techs = {
+    fileProvider: require('enb/techs/file-provider'),
+    borschik: require('enb-borschik/techs/borschik'),
+    borschikJsIncludeTech: require('enb-borschik/techs/js-borschik-include'),
+    js: require('enb-js/techs/browser-js'),
+    css: require('enb-stylus/techs/stylus'),
+}
+
+const enbBemTechs = require('enb-bem-techs');
+
 module.exports = function(config) {
     config.node('desktop.bundles/common');
     config.node('desktop.bundles/index');
     config.node('desktop.bundles/index-bem');
 
-    config.nodeMask(/desktop\.bundles\/.*/, function(nodeConfig) {
+    const isProd = process.env.YENV === 'production';
+
+    config.nodes('*.bundles/*', function (nodeConfig) {
         nodeConfig.addTechs([
-            new (require('enb/techs/file-provider'))({ target: '?.bemdecl.js' }),
-            new (require('enb/techs/levels'))({ levels: getLevels(config) }),
-            new (require('enb/techs/deps-old'))(),
-            new (require('enb/techs/files'))(),
-            new (require('enb/techs/js'))(),
-            new (require('enb/techs/css'))()
+            [techs.fileProvider, { target: '?.bemdecl.js' }],
+            [enbBemTechs.levels, { levels: getLevels(config) }],
+            [enbBemTechs.depsOld],
+            [enbBemTechs.files],
+
+            [techs.borschikJsIncludeTech, { target: '?.pre.js' }],
+            [techs.css, { target: '?.pre.css' }],
+
+            [techs.borschik, { source: '?.pre.js', target: '?.min.js', minify: isProd }],
+            [techs.borschik, { source: '?.pre.css', target: '?.min.css', minify: isProd }]
         ]);
 
-        nodeConfig.addTargets([
-            '?.js', '_?.js', '?.css', '_?.css'
-        ]);
-    });
-
-    config.mode('development', function() {
-        config.nodeMask(/desktop\.bundles\/.*/, function(nodeConfig) {
-            nodeConfig.addTechs([
-                new (require('enb/techs/js-expand-includes'))({ sourceTarget: '?.js', destTarget: '_?.js' }),
-                new (require('enb/techs/file-copy'))({ sourceTarget: '?.css', destTarget: '_?.css' })
-            ]);
-        });
-    });
-
-    config.mode('production', function() {
-        config.nodeMask(/desktop\.bundles\/.*/, function(nodeConfig) {
-            nodeConfig.addTechs([
-                new (require('enb/techs/borschik'))({ sourceTarget: '?.js', destTarget: '_?.js' }),
-                new (require('enb/techs/borschik'))({ sourceTarget: '?.css', destTarget: '_?.css' })
-            ]);
-        });
+        nodeConfig.addTargets(['?.min.css', '?.min.js']);
     });
 };
 
