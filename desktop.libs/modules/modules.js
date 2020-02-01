@@ -1,1 +1,1 @@
-include('../../libs/modules/modules.js');
+/* borschik:include:../../node_modules/ym/modules.js*/

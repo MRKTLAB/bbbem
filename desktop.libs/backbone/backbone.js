@@ -1,1 +1,1 @@
-include('../../libs/backbone/backbone.js');
+/* borschik:include:../../node_modules/backbone/backbone.js*/

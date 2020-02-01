@@ -1,1 +1,1 @@
-include('../../libs/underscore/underscore.js');
+/* borschik:include:../../node_modules/underscore/underscore.js*/

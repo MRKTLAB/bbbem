@@ -1,8 +1,8 @@
 # BBBEM
 
 ## Сборка
-- Сборка проекта: make
-- Пересборка: make build
+- Сборка проекта: `npm run build`   
+- Разработка: `npm run dev`    
 
 ## Описание уровней сборки
 1. **desktop.bundles** – страничные бандлы (common-bundle, page-bundle)
